@@ -27,8 +27,7 @@ class RichEditorExample extends React.Component {
 	_toggleBlockType(blockType) {
 		this.onChange(
 			RichUtils.toggleBlockType(
-				this.state.editorState,
-				blockType
+				this.state.editorState, blockType
 			)
 		);
 	}
@@ -36,8 +35,7 @@ class RichEditorExample extends React.Component {
 	_toggleInlineStyle(inlineStyle) {
 		this.onChange(
 			RichUtils.toggleInlineStyle(
-			this.state.editorState,
-				inlineStyle
+				this.state.editorState, inlineStyle
 			)
 		);
 	}
@@ -56,23 +54,23 @@ class RichEditorExample extends React.Component {
 		return (
 			<div className="RichEditor-root">
 				<BlockStyleControls
-					editorState={editorState}
-					onToggle={this.toggleBlockType}
+					editorState = { editorState }
+					onToggle = { this.toggleBlockType }
 				/>
 			<InlineStyleControls
-				editorState={editorState}
-				onToggle={this.toggleInlineStyle}
+				editorState = { editorState }
+				onToggle = { this.toggleInlineStyle }
 			/>
 			<div className={className} onClick={this.focus}>
 				<Editor
-					blockStyleFn={getBlockStyle}
-					customStyleMap={styleMap}
-					editorState={editorState}
-					handleKeyCommand={this.handleKeyCommand}
-					onChange={this.onChange}
-					placeholder="Tell a story..."
-					ref="editor"
-					spellCheck={true}
+					blockStyleFn = { getBlockStyle }
+					customStyleMap = { styleMap }
+					editorState = { editorState }
+					handleKeyCommand = { this.handleKeyCommand }
+					onChange = { this.onChange }
+					placeholder = "Tell a story..."
+					ref = "editor"
+					spellCheck = { true }
 					/>
 				</div>
 			</div>
@@ -110,7 +108,6 @@ class StyleButton extends React.Component {
 		if (this.props.active) {
 			className += ' RichEditor-activeButton';
 		}
-
 		return (
 			<span className={className} onMouseDown={this.onToggle}>
 				{this.props.label}
@@ -139,10 +136,10 @@ const BlockStyleControls = (props) => {
 		<div className="RichEditor-controls">
 			{BLOCK_TYPES.map((type) =>
 				<StyleButton
-					active={type.style === blockType}
-					label={type.label}
-					onToggle={props.onToggle}
-					style={type.style}
+					active = { type.style === blockType }
+					label = { type.label }
+					onToggle = { props.onToggle }
+					style = { type.style }
 				/>
 			)}
 		</div>
@@ -162,10 +159,10 @@ const InlineStyleControls = (props) => {
 		<div className="RichEditor-controls">
 			{INLINE_STYLES.map(type =>
 				<StyleButton
-					active={currentStyle.has(type.style)}
-					label={type.label}
-					onToggle={props.onToggle}
-					style={type.style}
+					active = { currentStyle.has(type.style) }
+					label = { type.label }
+					onToggle = { props.onToggle }
+					style = { type.style }
 				/>
 			)}
 		</div>
